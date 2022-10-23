@@ -44,7 +44,9 @@ class Action implements Runnable {
                 case 0:
                     if (m + 1 != am) {
                         m += wnd(from, to, value);
-                    } else
+                    } else if (mode==0) {
+                        wnd(from, to, 0);
+                    } else 
                         m--;
                     break;
 

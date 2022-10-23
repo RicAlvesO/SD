@@ -4,8 +4,8 @@ class BankTest {
 		final int     AM = 10000;                                         // RECOMENDED: 10000   | Cash per Account
     	final int     TN = 2*Runtime.getRuntime().availableProcessors();  // RECOMENDED: 2*#CPUs | Threads 
     	final int     N  = 10000;                                         // RECOMENDED: 10000   | Accounts per Thread
-		final int 	  OP = 10000;									      // RECOMENDED: 10000   | Operations per Thread 
-    	final boolean V  = true;                                         // RECOMENDED: true    | Verbose
+		final int 	  OP = 1000000;									      // RECOMENDED: 1000000 | Operations per Thread 
+    	final boolean V  = false;                                         // RECOMENDED: false   | Verbose
 		final long startTime = System.nanoTime(); // Global Clock: runtime start to finish
 
 		//------------------------------------------------------------
@@ -53,7 +53,7 @@ class BankTest {
     	timeF = System.nanoTime();
 		at_bal=b.totalBalance();
 
-		// Random Operations error
+		// Balance Operations error
 		if(at_bal!=TN*N*AM){
 			System.out.println("Bank total balance is not correct after random balance requests"); 
 			return; 
@@ -61,7 +61,7 @@ class BankTest {
 
 		//Print Results 
 		System.out.println("[CLOCK] " + TN * OP + " Balances were checked in " + (timeF - startTimeF) / 1000000 + " ms");
-    	System.out.println("["+Thread.currentThread().getName().toUpperCase()+"] Total Balance - Random Operations : "+at_bal);
+    	System.out.println("["+Thread.currentThread().getName().toUpperCase()+"] Total Balance - Random Balances : "+at_bal);
 		
 
 		//------------------------------------------------------------
@@ -72,7 +72,7 @@ class BankTest {
     	timeF = System.nanoTime();
 		at_bal=b.totalBalance();
 
-		// Random Operations error
+		// Random Deposits+Withdraws error
 		if(at_bal!=TN*N*AM){
 			System.out.println("Bank total balance is not correct after random deposits and withdraws"); 
 			return; 
@@ -80,7 +80,7 @@ class BankTest {
 
 		//Print Results 
 		System.out.println("[CLOCK] " + TN * OP + " Deposits+Withdraws were made in " + (timeF - startTimeF) / 1000000 + " ms");
-    	System.out.println("["+Thread.currentThread().getName().toUpperCase()+"] Total Balance - Random Operations : "+at_bal);
+    	System.out.println("["+Thread.currentThread().getName().toUpperCase()+"] Total Balance - Random Deposits+Withdraws : "+at_bal);
 		
 
 		//------------------------------------------------------------
@@ -91,7 +91,7 @@ class BankTest {
     	timeF = System.nanoTime();
 		at_bal=b.totalBalance();
 
-		// Random Operations error
+		// Random Transfers error
 		if(at_bal!=TN*N*AM){
 			System.out.println("Bank total balance is not correct after random transferences"); 
 			return; 
@@ -99,7 +99,7 @@ class BankTest {
 
 		//Print Results 
 		System.out.println("[CLOCK] " + TN * OP + " Transferences were made in " + (timeF - startTimeF) / 1000000 + " ms");
-    	System.out.println("["+Thread.currentThread().getName().toUpperCase()+"] Total Balance - Random Operations : "+at_bal);
+    	System.out.println("["+Thread.currentThread().getName().toUpperCase()+"] Total Balance - Random Transferences : "+at_bal);
 		
 
 		//------------------------------------------------------------
