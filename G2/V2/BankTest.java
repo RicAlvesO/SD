@@ -1,10 +1,10 @@
 import java.util.Random;
 
-class MoverCL implements Runnable {
-  BankCL b;
+class Mover implements Runnable {
+  Bank b;
   int s; // Number of accounts
 
-  public MoverCL(BankCL b, int s) { this.b=b; this.s=s; }
+  public Mover(Bank b, int s) { this.b=b; this.s=s; }
 
   public void run() {
     final int moves=100000;
@@ -20,11 +20,11 @@ class MoverCL implements Runnable {
   }
 }
 
-class BankTestCL {
+class BankTest {
   public static void main(String[] args) throws InterruptedException {
     final int N=10;
 
-    BankCL b = new BankCL(N);
+    Bank b = new Bank(N);
 
     for (int i=0; i<N; i++) 
       b.deposit(i,1000);
@@ -37,7 +37,7 @@ class BankTestCL {
     for (int i = 0; i < tn; i++) {
       t = new Thread[tn];
       for (int j = 0; j < tn; j++) {
-        t[j] = new Thread(new MoverCL(b, 10));
+        t[j] = new Thread(new Mover(b, 10));
       }
       for (int j = 0; j < tn; j++) {
         t[j].start();

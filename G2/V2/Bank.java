@@ -1,6 +1,6 @@
 import java.util.concurrent.locks.ReentrantLock;
 
-class BankCL {
+public class Bank {
 
   private static class AccountCL {
     private int balance;
@@ -29,7 +29,7 @@ class BankCL {
   private int slots;
   private AccountCL[] av; 
 
-  public BankCL(int n)
+  public Bank(int n)
   {
     slots=n;
     av=new AccountCL[slots];

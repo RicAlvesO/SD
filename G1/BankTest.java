@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Increment implements Runnable {
+class BankTest implements Runnable {
   public  static void main(String[] args) {
     final long N=10;
     List<Thread> threads = new ArrayList<Thread>();
     for (int i = 0; i < N; i++) {
-      Thread t = new Thread(new Increment());
+      Thread t = new Thread(new BankTest());
       t.start();
       threads.add(t);
     }
